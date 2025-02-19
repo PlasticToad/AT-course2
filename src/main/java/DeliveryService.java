@@ -1,3 +1,7 @@
+import io.qameta.allure.Step;
+
+import java.text.DecimalFormat;
+
 public class DeliveryService {
     public static final double MIN_DELIVERY_PRICE = 400;
 
@@ -35,8 +39,8 @@ public class DeliveryService {
         }
     }
 
-    public double calculateDeliveryPrice() {
-        System.out.println("Delivery details:" + "\n" +
+    public Double calculateDeliveryPrice() {
+        System.out.println("\n" + "Delivery details:" + "\n" +
                 "Delivery distance - " + deliveryDistance + "\n" +
                 "Cargo size - " + cargoSize + "\n" +
                 "Fragile - " + isFragile + "\n" +
@@ -50,8 +54,9 @@ public class DeliveryService {
             System.out.println("Total price: " + MIN_DELIVERY_PRICE);
             return MIN_DELIVERY_PRICE;
         } else {
-            System.out.println("Total price: " + totalPrice);
-            return totalPrice;
+            DecimalFormat format = new DecimalFormat("###");
+            System.out.println("Total price: " + Double.parseDouble(format.format(totalPrice)));
+            return Double.parseDouble(format.format(totalPrice));
         }
     }
 }
